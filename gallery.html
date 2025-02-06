@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        text-align: center;
+        font-family: Arial, sans-serif;
+      }
+      .stars {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("https://www.transparenttextures.com/patterns/stardust.png");
+        pointer-events: none;
+        z-index: 0;
+      }
+      .container {
+        position: relative;
+        z-index: 10;
+        margin-top: 50px;
+      }
+      .carousel {
+        position: relative;
+        width: 500px;
+        height: 400px;
+        margin: auto;
+      }
+      .carousel img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+      }
+      .controls {
+        margin-top: 10px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin: 5px;
+        cursor: pointer;
+      }
+
+      /* 🌹 Valentine's Day Header Styles 🌹 */
+      .valentine-message {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 36px;
+        font-weight: bold;
+        background: linear-gradient(45deg, #ff416c, #ff4b2b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0px 0px 10px rgba(255, 75, 43, 0.7);
+        animation: glow 1.5s infinite alternate;
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow: 0px 0px 10px rgba(255, 75, 43, 0.7);
+        }
+        to {
+          text-shadow: 0px 0px 20px rgba(255, 75, 43, 1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stars"></div>
+    <div class="container">
+      <button id="flowerButton">View Flower</button>
+
+      <div class="carousel">
+        <img id="carouselImage" src="" alt="Carousel Image">
+      </div>
+
+      <!-- Valentine's Day Message -->
+      <h1 class="valentine-message">Happy Valentine's Day 💖</h1>
+    </div>
+
+    <script>
+      document.getElementById("flowerButton").addEventListener("click", goToFlower);
+
+      function goToFlower() {
+        console.log("Redirecting to Flower");
+        window.location.href = "index.html";
+      }
+
+      const images = [];
+      for (let i = 1; i <= 85; i++) {
+        images.push(`Images/img (${i}).jpg`);
+      }
+
+      let currentImageIndex = 0;
+      const carouselImage = document.getElementById("carouselImage");
+
+      function showImage(index) {
+        carouselImage.src = images[index];
+      }
+
+      function startAutoNext() {
+        setInterval(() => {
+          nextImage();
+        }, 3000); 
+      }
+
+      function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        showImage(currentImageIndex);
+      }
+
+      showImage(currentImageIndex);
+      startAutoNext();
+    </script>
+  </body>
+</html>

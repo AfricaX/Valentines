@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Will You Be My Valentine</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        position: relative;
+        background-color: black;
+        overflow: hidden;
+      }
+
+      .container {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 3px 3px 3px rgba(240, 93, 121, 0.6);
+        z-index: 10;
+      }
+
+      h1 {
+        color: #f05d79; /* Color: f05d79 */
+      }
+
+      .heart {
+        color: #ffb3d9; /* Color: ffb3d9 */
+        font-size: 50px;
+        animation: heartbeat 1s infinite;
+      }
+
+      @keyframes heartbeat {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .buttons button {
+        margin: 10px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .yes {
+        background-color: #39c6d6; /* Color: 39c6d6 */
+        color: white;
+      }
+
+      .yes:hover {
+        background-color: #14757a; /* Color: 14757a */
+        z-index: 0;
+        position: relative;
+      }
+
+      .no {
+        background-color: #f05d79; /* Color: f05d79 */
+        color: white;
+        transition: transform 0.2s ease, background-color 0.3s ease;
+        z-index: 1;
+        position: relative;
+      }
+
+      .no:hover {
+        background-color: #ffb3d9; /* Color: ffb3d9 */
+      }
+
+      .stars {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("https://www.transparenttextures.com/patterns/stardust.png");
+
+        z-index: 0;
+      }
+      .image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stars"></div>
+    <div class="container">
+      <div class="image">
+        <img
+          src="https://media.tenor.com/SqYXXNI-A4IAAAAi/happy-valentines.gif"
+          alt=""
+        />
+      </div>
+      <h1>Will You Be My Valentine? <span class="heart">❤</span></h1>
+      <div class="buttons">
+        <button class="yes" onclick="goToGallery()" disabled>Yes</button>
+        <button class="no" onclick="changeButton()">No</button>
+      </div>
+    </div>
+    <script>
+      let currentIndex = 0;
+      let yesSize = 1;
+      function goToGallery() {
+        window.location.href = "gallery.html";
+      }
+      function changeButton() {
+        const noButton = document.querySelector(".no");
+        const yesButton = document.querySelector(".yes");
+
+        yesSize += 0.2;
+        yesButton.style.transform = `scale(${yesSize})`;
+
+        let words = [
+          "Are you sure?",
+          "Are you really sure?",
+          "Think again...",
+          "Wrong button!",
+          "Try again...",
+          "You don’t mean that!",
+          "Seriously?",
+          "Come on, say yes!",
+          "Don't break my heart 💔",
+          "I’ll pretend you didn’t click that...",
+          "Oops, button malfunction!",
+          "Just click Yes 😏",
+          "You're making a mistake!",
+          "Choose wisely...",
+          "This isn't the way...",
+          "Please reconsider 🙃",
+          "Your fate depends on this!",
+          "No means Yes, right?",
+          "Your mom said Yes.",
+          "God is watching...",
+          "Don't do this to me 😢",
+          "Say Yes and get a cookie 🍪",
+          "Your phone will explode in 3...2...1...",
+          "Yes is the only right answer!",
+          "I'll cry if you click this...",
+        ];
+
+        if (currentIndex < words.length) {
+          noButton.innerHTML = words[currentIndex];
+          currentIndex++;
+        } else {
+          noButton.remove();
+          yesButton.removeAttribute("disabled");
+        }
+      }
+    </script>
+  </body>
+</html>
