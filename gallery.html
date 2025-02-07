@@ -110,20 +110,37 @@
       <button id="flowerButton">View Flower</button>
 
       <div class="carousel">
-        <img id="carouselImage" src="" alt="Carousel Image">
+        <img id="carouselImage" src="" alt="Carousel Image" />
       </div>
 
-      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2Kerz9H9IejzeIpjhDJoYG?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> 
+      <button id="playMusicButton">Play Music 🎵</button>
+      <audio id="bgMusic" loop>
+        <source
+          src="Images/Elvis Presley - Can't Help Falling in Love (Lyrics) [ ezmp3.cc ].mp3"
+          type="audio/mpeg"
+        />
+        Your browser does not support the audio element.
+      </audio>
       <h1 class="valentine-message">Happy Valentine's Day 💖</h1>
     </div>
 
     <script>
-      document.getElementById("flowerButton").addEventListener("click", goToFlower);
+      document
+        .getElementById("flowerButton")
+        .addEventListener("click", goToFlower);
 
       function goToFlower() {
         console.log("Redirecting to Flower");
         window.location.href = "index.html";
       }
+
+      document
+        .getElementById("playMusicButton")
+        .addEventListener("click", function () {
+          const music = document.getElementById("bgMusic");
+          music.play();
+          this.style.display = "none";
+        });
 
       const images = [];
       for (let i = 1; i <= 85; i++) {
@@ -140,7 +157,7 @@
       function startAutoNext() {
         setInterval(() => {
           nextImage();
-        }, 3000); 
+        }, 3000);
       }
 
       function nextImage() {
